@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: api_alipay.php 22425 2011-05-06 10:36:52Z zhengqingpeng $
+ *      $Id: api_alipay.php 30095 2012-05-10 06:36:49Z zhengqingpeng $
  */
 
 define('IN_API', true);
@@ -42,6 +42,7 @@ function credit_payurl($price, &$orderid) {
 		'price' 		=> $price,
 		'quantity' 		=> 1,
 		'seller_email' 		=> $_G['setting']['ec_account'],
+		'extend_param'	=> 'isv^dz11'
 	);
 	if(DISCUZ_DIRECTPAY) {
 		$args['service'] = 'create_direct_pay_by_user';
@@ -73,6 +74,7 @@ function invite_payurl($amount, $price, &$orderid) {
 		'price' 		=> $price,
 		'quantity' 		=> 1,
 		'seller_email' 		=> $_G['setting']['ec_account'],
+		'extend_param'	=> 'isv^dz11'
 	);
 	if(DISCUZ_DIRECTPAY) {
 		$args['service'] = 'create_direct_pay_by_user';
@@ -106,6 +108,7 @@ function trade_payurl($pay, $trade, $tradelog) {
 		'logistics_payment' 	=> $pay['transport'],
 		'payment_type' 		=> $trade['itemtype'],
 		'seller_email' 		=> $trade['account'],
+		'extend_param'	=> 'isv^dz11'
 	);
 
 	if($pay['logistics_type'] == 'VIRTUAL') {
@@ -158,6 +161,9 @@ function trade_notifycheck($type) {
 			$urlstr .= $key.'='.rawurlencode(stripslashes($val)).'&';
 		}
 	} else {
+		if(!DISCUZ_SECURITYCODE) {
+			exit('Access Denied');
+		}
 		ksort($notify);
 		$sign = '';
 		foreach($notify as $key => $val) {

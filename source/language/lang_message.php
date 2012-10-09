@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: lang_message.php 25643 2011-11-16 09:54:51Z liulanbo $
+ *      $Id: lang_message.php 30863 2012-06-27 03:33:04Z zhangjie $
  *
  *      This file is automatically generate
  */
@@ -133,6 +133,7 @@ $lang = array (
   'search_forum_invalid' => '抱歉，您尚未指定搜索论坛的范围',
   'search_invalid' => '抱歉，您尚未指定要搜索的关键字或用户名',
   'search_redirect' => '搜索成功，现在将转入结果页面',
+  'search_closed' => '搜索功能已关闭',
   'to_view_the_photo_does_not_exist' => '抱歉，您要查看的相册不存在或正在审核',
   'ban_view_other_thead' => '抱歉，禁止查看其他用户的主题和帖子',
   'album_does_not_exist' => '抱歉，指定的相册不存在',
@@ -282,6 +283,7 @@ $lang = array (
   'thread_closed' => '该帖子已被关闭，不能评论！',
   'postcomment_error' => '抱歉，您不能点评此帖或帖子尚未找到',
   'postappend_only_yourself' => '只能在自己的帖子后补充内容',
+  'postappend_not_open' => '抱歉，版块没有开启帖子补充功能',
   'postappend_add_succeed' => '添加成功 ',
   'replynotice_success_1' => '接收设置成功 ',
   'replynotice_success_0' => '取消设置成功 ',
@@ -914,7 +916,7 @@ $lang = array (
   'threadtype_num_invalid' => '抱歉，资料数值不正确，请检查 {typetitle} 选项',
   'threadtype_unchangeable_invalid' => '抱歉，资料不得修改，请检查{typetitle}选项',
 
-  'user_banned' => '抱歉，您的 IP 地址不在被允许，或您的账号被禁用，无法访问本站点',
+  'user_banned' => '抱歉，您的 IP 地址不在允许范围内，或您的账号被禁用，无法访问本站点',
   'board_closed' => '抱歉，本站点暂时关闭，详情请 <a href="mailto:{adminemail}">联系管理员</a>',
 
   'login_strike' => '密码错误次数过多，请 15 分钟后重新登录',

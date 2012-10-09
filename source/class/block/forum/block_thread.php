@@ -79,8 +79,7 @@ class block_thread {
 					array(4, 'threadlist_special_4'),
 					array(5, 'threadlist_special_5'),
 					array(0, 'threadlist_special_0'),
-				),
-				'default' => array('0')
+				)
 			),
 			'viewmod' => array(
 				'title' => 'threadlist_viewmod',
@@ -318,14 +317,19 @@ class block_thread {
 		if($orderby == 'heats') {
 			$sql .= " AND t.heats>'0'";
 		}
-		$sqlfrom = "FROM `".DB::table('forum_thread')."` t";
+		$sqlfrom = $sqlfield = $joinmethodpic = '';
 
-		$sqlfield = '';
-		$joinmethod = empty($tids) ? 'INNER' : 'LEFT';
-		if($style['getpic'] || $picrequired) {
-			$sqlfrom .= " $joinmethod JOIN `".DB::table('forum_threadimage')."` ti ON t.tid=ti.tid AND ti.tid>0";
+		if($picrequired) {
+			$joinmethodpic = 'INNER';
+		} else if($style['getpic']) {
+			$joinmethodpic = 'LEFT';
+		}
+		if($joinmethodpic) {
+			$sqlfrom .= " $joinmethodpic JOIN `".DB::table('forum_threadimage')."` ti ON t.tid=ti.tid AND ti.tid>0";
 			$sqlfield = ', ti.attachment as attachmenturl, ti.remote';
 		}
+
+		$joinmethod = empty($tids) ? 'INNER' : 'LEFT';
 		if($recommend) {
 			$sqlfrom .= " $joinmethod JOIN `".DB::table('forum_forumrecommend')."` fc ON fc.tid=t.tid";
 		}
@@ -335,6 +339,7 @@ class block_thread {
 		}
 
 		$query = DB::query("SELECT DISTINCT t.*$sqlfield
+			FROM `".DB::table('forum_thread')."` t
 			$sqlfrom WHERE t.readperm='0'
 			$sql
 			AND t.displayorder>='0'

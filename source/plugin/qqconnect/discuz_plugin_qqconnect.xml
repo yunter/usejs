@@ -12,7 +12,7 @@
 			<item id="datatables"><![CDATA[]]></item>
 			<item id="directory"><![CDATA[qqconnect/]]></item>
 			<item id="copyright"><![CDATA[Comsenz Inc.]]></item>
-			<item id="version"><![CDATA[1.03]]></item>
+			<item id="version"><![CDATA[1.05]]></item>
 			<item id="__modules">
 				<item id="1">
 					<item id="name"><![CDATA[connect]]></item>
@@ -62,6 +62,7 @@
 				<item id="connect_wbsign_no_account"><![CDATA[您尚未开通腾讯微博功能，无法使用腾讯微博签名档功能]]></item>
 				<item id="connect_wbsign_no_bind"><![CDATA[您需要绑定QQ帐号，才可使用腾讯微博签名档功能]]></item>
 				<item id="connect_wbsign_tip"><![CDATA[插入腾讯微博做为论坛签名，可第一时间将您的微博最新信息展示给本站的会员和游客]]></item>
+				<item id="connect_access_token_out_of_date_share"><![CDATA[为了您的账号安全，请使用QQ帐号重新登录，将为您升级帐号安全机制<br/><br/>点击<a href=\"{$_G[connect][login_url]}\"><img src=\"static/image/common/qq_login.gif\" class=\"vm\" alt=\"QQ登录\" /></a>页面将发生跳转，请确保您已保存好帖子数据]]></item>
 			</item>
 			<item id="templatelang">
 				<item id="connect_header_login"><![CDATA[QQ登录]]></item>
@@ -184,6 +185,9 @@
 				<item id="connect_spacecp_weibo_reason_is_short"><![CDATA[请输入您要转播的微博内容]]></item>
 				<item id="connect_member_register_tip"><![CDATA[您将使用QQ账号{$qq_nick}注册本站，<a href="{$change_qq_url}">更换QQ账号</a>？]]></item>
 				<item id="connect_member_loginbind_tip"><![CDATA[您将使用QQ账号{$qq_nick}绑定本站账号，<a href="{$change_qq_url}">更换QQ账号</a>？]]></item>
+				<item id="connect_wbsign_no_account"><![CDATA[您尚未开通腾讯微博功能，无法使用腾讯微博签名档功能]]></item>
+				<item id="connect_wbsign_no_bind"><![CDATA[您需要绑定QQ帐号，才可使用腾讯微博签名档功能]]></item>
+				<item id="connect_wbsign_tip"><![CDATA[插入腾讯微博做为论坛签名，可第一时间将您的微博最新信息展示给本站的会员和游客]]></item>
 			</item>
 		</item>
 	</item>

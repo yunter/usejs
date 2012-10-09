@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: lang_admincp.php 25238 2011-11-02 02:28:34Z zhangguosheng $
+ *      $Id: lang_admincp.php 30095 2012-05-10 06:36:49Z zhengqingpeng $
  */
 
 
@@ -1866,6 +1866,17 @@ $lang = array
 	'setting_attach_remote_minsize' => '附件尺寸下限',
 	'setting_attach_remote_minsize_comment' => '单位：KB，只有尺寸大于当前设置的附件才使用远程附件功能，0 或留空为不限制',
 	'setting_attach_remote_ftpcheck' => '检测远程附件设置',
+
+	'setting_ftp_remote_-100' => '当前服务器 PHP 没有安装 FTP 扩展模块或 FTP 函数被禁用',
+	'setting_ftp_remote_-101' => '尝试连接到 FTP 服务器失败，请检查 FTP 服务器地址和端口号设置是否正确',
+	'setting_ftp_remote_-102' => '尝试连接到 FTP 服务器失败，请检查 FTP 服务器地址和端口号设置是否正确',
+	'setting_ftp_remote_-103' => '尝试登录到 FTP 服务器失败，请检查 FTP 帐号密码设置是否正确',
+	'setting_ftp_remote_-104' => '尝试切换目录失败，请检查站点目录设置是否正确',
+	'setting_ftp_remote_-105' => '尝试创建目录失败，请检查站点目录设置是否正确，并检查 FTP 帐号是否具有创建目录的权限',
+	'setting_ftp_remote_-106' => '尝试上传文件失败，请检查站点目录是否具有上传文件的权限',
+	'setting_ftp_remote_-107' => '尝试上传文件失败，请检查 FTP 帐号是否具有上传文件的权限，如果确认权限正常，请尝试使用被动模式(pasv)连接',
+	'setting_attach_ftp_dir' => '站点根目录',
+	'setting_attach_ftp_dir_comment' => '站点根目录的绝对路径或相对于 FTP 主目录的相对路径，结尾不要加斜杠“/”，“.”表示 FTP 主目录',
 
 	'setting_attach_remote_-100' => '当前服务器 PHP 没有安装 FTP 扩展模块或 FTP 函数被禁用',
 	'setting_attach_remote_-101' => '远程附件功能未开启',
@@ -4822,8 +4833,8 @@ $lang = array
 	'ec_alipay_contract_comment' => '如果你的支付宝账号是签约用户，可以选择“是”让论坛使用你自己的商家服务平台。如果你还未签约，<a href="http://act.life.alipay.com/systembiz/discuz/" target="_blank">请点击这里签约</a>',
 	'ec_alipay_securitycode' => '交易安全校验码 (key)',
 	'ec_alipay_securitycode_comment' => '支付宝签约用户可以在此处填写支付宝分配给你的交易安全校验码，此校验码你可以到支付宝官方的商家服务功能处查看',
-	'ec_alipay_partner' => '合作者身份 (partnerID)',
-	'ec_alipay_partner_comment' => '支付宝签约用户请在此处填写支付宝分配给你的合作者身份，签约用户的手续费按照你与支付宝官方的签约协议为准。如果你还未签约，<a href="http://act.life.alipay.com/systembiz/discuz/" target="_blank">请点击这里签约</a>；如果在签约时出现合同模板冲突，请咨询0571-88158090',
+	'ec_alipay_partner' => '合作者身份 (PID)',
+	'ec_alipay_partner_comment' => '支付宝签约用户请在此处填写支付宝分配给你的合作者身份，签约用户的手续费按照你与支付宝官方的签约协议为准。<br/>如果你还未签约，<a href="http://act.life.alipay.com/systembiz/discuz/" target="_blank">请点击这里签约</a>；如果已签约,<a href="https://b.alipay.com/order/pidKey.htm?pid=2088501719138773&product=fastpay" target="_blank">请点击这里获取PID、Key</a>;如果在签约时出现合同模板冲突，请咨询0571-88158090',
 	'ec_alipay_creditdirectpay' => '使用纯即时到帐接口',
 	'ec_alipay_creditdirectpay_comment' => '如果你的签约协议中包含纯即时到帐接口（不是标准双接口）可以选择此项，让积分充值只能使用即时到账方式付款',
 
@@ -6130,6 +6141,11 @@ $lang = array
 
 	'import_data_invalid' => '数据无法识别，请返回',
 	'import_data_typeinvalid' => '数据类型错误，请返回',
+
+	'cloudaddons_ftp_setting' => '站点 FTP 设置',
+	'cloudaddons_unwriteabledirs' => '站点 {basedir} 目录下的以下目录不可写，无法在线安装此应用，请填写本站点的 FTP 连接参数(本设置不会被保存):<br />{unwriteabledirs}',
+	'cloudaddons_plugin_link' => '获取更多插件',
+	'cloudaddons_style_link' => '获取更多风格',
 
 
 	'rewrite_message' => '<h1>Apache Web Server(独立主机用户)</h1>

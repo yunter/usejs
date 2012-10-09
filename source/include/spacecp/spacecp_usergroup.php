@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: spacecp_usergroup.php 26467 2011-12-13 09:00:02Z monkey $
+ *      $Id: spacecp_usergroup.php 29391 2012-04-10 04:00:08Z monkey $
  */
 
 if(!defined('IN_DISCUZ')) {

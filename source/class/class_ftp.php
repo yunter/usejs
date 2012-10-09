@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: class_ftp.php 18742 2010-12-02 05:41:21Z monkey $
+ *      $Id: class_ftp.php 30582 2012-06-05 06:09:06Z chenmengshu $
  */
 
 if(!defined('FTP_ERR_SERVER_DISABLED')) {
@@ -30,17 +30,17 @@ class discuz_ftp
 	var $connectid;
 	var $_error;
 
-	function &instance() {
+	function &instance($config = array()) {
 		static $object;
 		if(empty($object)) {
-			$object = new discuz_ftp();
+			$object = new discuz_ftp($config);
 		}
 		return $object;
 	}
 
-	function discuz_ftp() {
+	function discuz_ftp($config = array()) {
 		$this->set_error(0);
-		$this->config = getglobal('setting/ftp');
+		$this->config = !$config ? getglobal('setting/ftp') : $config;
 		$this->enabled = false;
 		if(empty($this->config['on']) || empty($this->config['host'])) {
 			$this->set_error(FTP_ERR_CONFIG_OFF);
@@ -52,7 +52,7 @@ class discuz_ftp
 				$this->config['host'] = discuz_ftp::clear($this->config['host']);
 				$this->config['port'] = intval($this->config['port']);
 				$this->config['ssl'] = intval($this->config['ssl']);
-				$this->config['host'] = discuz_ftp::clear($this->config['host']);
+				$this->config['username'] = discuz_ftp::clear($this->config['username']);
 				$this->config['password'] = authcode($this->config['password'], 'DECODE', md5(getglobal('config/security/authkey')));
 				$this->config['timeout'] = intval($this->config['timeout']);
 				$this->enabled = true;

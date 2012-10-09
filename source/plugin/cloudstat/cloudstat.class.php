@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: cloudstat.class.php 26452 2011-12-13 07:28:13Z yexinhao $
+ *      $Id: cloudstat.class.php 29952 2012-05-03 10:53:30Z monkey $
  */
 
 if(!defined('IN_DISCUZ')) {
@@ -15,12 +15,12 @@ class plugin_cloudstat {
 	var $discuzParams = array();
 	var $extraParams = array();
 
-	function global_footerlink() {
+	function common() {
 		global $_G;
 		if($_G['inajax']) {
-			return '';
+			return;
 		}
-		return $this->_makejs();
+		$_G['setting']['statcode'] = $this->_makejs() . $_G['setting']['statcode'];
 	}
 
 	function global_cpnav_extra1() {
@@ -308,7 +308,7 @@ class mobileplugin_cloudstat extends plugin_cloudstat {
 		}
 		$pingd = 'http://pingtcss.qq.com/pingd?' . $query . 'ext=' . implode(';', $this->extraParams);
 
-		return '<img src="' . $pingd . '" />';
+		return '<img src="' . $pingd . '" height="1" width="1" style="float:right" />';
 	}
 }
 

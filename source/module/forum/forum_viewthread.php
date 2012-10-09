@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: forum_viewthread.php 26645 2011-12-19 02:44:06Z liulanbo $
+ *      $Id: forum_viewthread.php 30000 2012-05-07 04:11:29Z liulanbo $
  */
 
 if(!defined('IN_DISCUZ')) {
@@ -214,7 +214,7 @@ if($rushreply) {
 		if(!$rushresult['starttimeto'] && !$rushresult['stopfloor']) {
 			DB::query("UPDATE ".DB::table('forum_thread')." SET closed='0' WHERE tid='$_G[tid]'");
 		} else {
-			if(($rushresult['starttimeto'] && TIMESTAMP < $rushresult['starttimeto']) || ($rushresult['stopfloor'] && $_G['forum_thread']['replies'] + 1 < $rushresult['stopfloor'])) {
+			if(($rushresult['starttimeto'] && TIMESTAMP < $rushresult['starttimeto'] && $rushresult['stopfloor'] > $_G['forum_thread']['replies'] + 1) || ($rushresult['stopfloor'] && $_G['forum_thread']['replies'] + 1 < $rushresult['stopfloor'])) {
 				DB::query("UPDATE ".DB::table('forum_thread')." SET closed='0' WHERE tid='$_G[tid]'");
 			}
 		}
@@ -585,7 +585,7 @@ if($postusers) {
 			$verifyadd
 			WHERE m.uid IN (".dimplode(array_keys($postusers)).")");
 	while($postuser = DB::fetch($query)) {
-		if(strtotime($postuser['regdate']) + $postuser['oltime'] * 3600 > TIMESTAMP) {
+		if($postuser['regdate'] + $postuser['oltime'] * 3600 > TIMESTAMP) {
 			$postuser['oltime'] = 0;
 		}
 		$postuser['privacy'] = unserialize($postuser['privacy']);
@@ -815,7 +815,7 @@ if(empty($_G['gp_viewpid'])) {
 	if($rushreply) {
 		$post['number'] = DB::result_first("SELECT position FROM ".DB::table('forum_postposition')." WHERE pid='$_G[gp_viewpid]'");
 	} else {
-		$post['number'] = DB::result_first("SELECT COUNT(*) FROM ".DB::table($posttable)." WHERE tid='$post[tid]' AND dateline<='$post[dbdateline]'");
+		$post['number'] = DB::result_first("SELECT COUNT(*) FROM ".DB::table($posttable)." WHERE tid='$post[tid]' AND dateline<='$post[dbdateline]' AND invisible=0");
 	}
 	if($rushreply) {
 		$preg_str = rushreply_rule($rewardfloorarr);

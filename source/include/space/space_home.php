@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: space_home.php 24305 2011-09-06 10:06:40Z zhangguosheng $
+ *      $Id: space_home.php 30782 2012-06-19 06:06:33Z zhengqingpeng $
  */
 
 if(!defined('IN_DISCUZ')) {
@@ -34,6 +34,8 @@ if(empty($_GET['view'])) {
 	} else {
 		$_GET['view'] = 'all';
 	}
+} elseif(!in_array($_GET['view'], array('we', 'me', 'all', 'app'))) {
+	$_GET['view'] = 'all';
 }
 if(empty($_GET['order'])) {
 	$_GET['order'] = 'dateline';
@@ -67,6 +69,7 @@ $gets = array(
 $theurl = 'home.php?'.url_implode($gets);
 $hotlist = array();
 if(!IS_ROBOT) {
+	$multi = '';
 	$feed_users = $feed_list = $user_list = $filter_list  = $list = $magic = array();
 	if($_GET['view'] != 'app') {
 		if($space['self'] && empty($start) && $_G['setting']['feedhotnum'] > 0 && ($_GET['view'] == 'we' || $_GET['view'] == 'all')) {
@@ -155,7 +158,6 @@ if(!IS_ROBOT) {
 		if($icon) {
 			$wheresql .= " AND icon='$icon'";
 		}
-		$multi = '';
 
 		$feed_list = $appfeed_list = $hiddenfeed_list = $filter_list = $hiddenfeed_num = $icon_num = array();
 		$count = $filtercount = 0;
@@ -222,7 +224,6 @@ if(!IS_ROBOT) {
 	$gidactives[$gid] = ' class="a"';
 
 	$count = $filtercount = 0;
-	$multi = '';
 
 	if($need_count) {
 		$query = DB::query("SELECT * FROM ".DB::table('home_feed')." $f_index

@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: uc.php 25684 2011-11-17 08:45:40Z monkey $
+ *      $Id: uc.php 29457 2012-04-13 01:31:12Z svn_project_zhangjie $
  */
 
 error_reporting(0);
@@ -45,8 +45,6 @@ if(!defined('IN_UC')) {
 
 	$discuz = & discuz_core::instance();
 	$discuz->init();
-
-	require DISCUZ_ROOT.'./config/config_ucenter.php';
 
 	$get = $post = array();
 
@@ -169,7 +167,7 @@ class uc_note {
 		}
 
 		foreach($tables as $table => $conf) {
-			DB::query("UPDATE ".DB::table($table)." SET `$conf[name]`='$get[newusername]' WHERE `$conf[id]`='$get[uid]' AND `$conf[name]`='$get[oldusername]'");
+			DB::query("UPDATE ".DB::table($table)." SET `$conf[name]`='$get[newusername]' WHERE `$conf[id]`='$get[uid]'");
 		}
 		return API_RETURN_SUCCEED;
 	}

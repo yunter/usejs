@@ -307,6 +307,8 @@ global $_G;
 
 function tpl_viewthread_share_method() {
 global $_G;
+if (!$_G['setting']['connect']['allow']) return;
+$connect_thread_subject = addslashes(strip_tags($_G['thread']['subject']));
 }
 <!--{block return}-->
 	<!--{if $_G['member']['conisbind']}-->
@@ -363,18 +365,37 @@ global $_G;
 		});
 		</script>
 	<!--{else}-->
-		<a href="javascript:void(0);" id="k_qqshare" onclick="window.open('{$_G[connect][qzone_public_share_url]}?from=discuz&url='+encodeURIComponent(document.location.href));return false;" title="{lang qqconnect:connect_viewthread_share_to_qzone}"><i><img src="{IMGDIR}/qzone.gif" alt="{lang qqconnect:connect_viewthread_share_to_qzone}" />{lang qqconnect:connect_viewthread_share_to_qzone}</i></a>
+		<a href="javascript:void(0);" id="k_qqshare" onclick="postToQzone();" title="{lang qqconnect:connect_viewthread_share_to_qzone}"><i><img src="{IMGDIR}/qzone.gif" alt="{lang qqconnect:connect_viewthread_share_to_qzone}" />{lang qqconnect:connect_viewthread_share_to_qzone}</i></a>
 		<a href="javascript:void(0)" onclick="postToWb();" id="k_weiboshare" title="{lang qqconnect:connect_viewthread_share_to_t}"><i><img src="{IMGDIR}/weibo.png" alt="{lang qqconnect:connect_viewthread_share_to_t}" />{lang qqconnect:connect_viewthread_share_to_t}</i></a>
-		<a href="javascript:void(0);" onclick="window.open('{$_G[connect][qzone_public_share_url]}?from=discuz&to=pengyou&url='+encodeURIComponent(document.location.href));return false;" id="k_pengyoushare" title="{lang qqconnect:connect_viewthread_share_to_pengyou}"><i><img src="{IMGDIR}/pengyou.png" alt="{lang qqconnect:connect_viewthread_share_to_pengyou}" />{lang qqconnect:connect_viewthread_share_to_pengyou}</i></a>
+		<a href="javascript:void(0);" onclick="postToPengyou();" id="k_pengyoushare" title="{lang qqconnect:connect_viewthread_share_to_pengyou}"><i><img src="{IMGDIR}/pengyou.png" alt="{lang qqconnect:connect_viewthread_share_to_pengyou}" />{lang qqconnect:connect_viewthread_share_to_pengyou}</i></a>
 		<script type="text/javascript">
 		function postToWb(){
 			var _t = encodeURI(document.title);
 			var _url = encodeURIComponent(document.location);
 			var _appkey = encodeURI("{$_G['connect']['weibo_appkey']}");
 			var _pic = "{$_G['connect']['share_images']}";
-			var _site = '';
-			var _u = 'http://v.t.qq.com/share/share.php?url='+_url+'&appkey='+_appkey+'&site='+_site+'&pic='+_pic+'&title='+_t+'&from=discuz';
+			var _site = encodeURIComponent("{$_G['setting']['bbname']}");
+			var _from = 'discuz';
+			var _u = 'http://v.t.qq.com/share/share.php?url='+_url+'&appkey='+_appkey+'&site='+_site+'&pic='+_pic+'&title='+_t+'&from='+_from;
 			window.open( _u,'', 'width=700, height=680, top=0, left=0, toolbar=no, menubar=no, scrollbars=no, location=yes, resizable=no, status=no' );
+		}
+		function postToQzone(){
+			var _url = encodeURIComponent(document.location.href);
+			var _site = encodeURIComponent("{$_G['setting']['bbname']}");
+			var _title = encodeURIComponent("{$connect_thread_subject}");
+			var _pics = "{$_G['connect']['share_images']}";
+			var _from = 'discuz';
+			var _u = '{$_G[connect][qzone_public_share_url]}?url='+_url+'&site='+_site+'&title='+_title+'&pics='+_pics+'&from='+_from;
+			window.open(_u);
+		}
+		function postToPengyou(){
+			var _url = encodeURIComponent(document.location.href);
+			var _site = encodeURIComponent("{$_G['setting']['bbname']}");
+			var _title = encodeURIComponent("{$connect_thread_subject}");
+			var _pics = "{$_G['connect']['share_images']}";
+			var _from = 'discuz';
+			var _u = '{$_G[connect][qzone_public_share_url]}?to=pengyou&url='+_url+'&site='+_site+'&title='+_title+'&pics='+_pics+'&from='+_from;
+			window.open(_u);
 		}
 		</script>
 	<!--{/if}-->
@@ -646,6 +667,59 @@ $connect_email = str_replace("'", "\'", $_G['qc']['connect_email']);
 				simulateSelect('loginfield_$loginhash');
 			<!--{/if}-->
 		<!--{/if}-->
+	</script>
+<!--{/block}-->
+<!--{eval return $return;}-->
+{eval
+}
+
+function tpl_spacecp_profile_bottom() {
+	global $_G;
+}
+<!--{block return}-->
+	<script type="text/javascript">
+	function connect_handle_get_weibosign(response, ajax) {
+		// 返回值形如: errCode=XX&result=XX
+		if (typeof(response) == "string" && response.indexOf("&") > 0) {
+
+			var errCode = response.substring(0, response.indexOf("&"));
+			errCode = errCode.substring(errCode.indexOf("=") + 1);
+
+			var result = response.substring(response.indexOf("&") + 1);
+			result = result.substring(result.indexOf("=") + 1);
+
+			response = {"errCode" : errCode, "result" : result};
+		} else {
+			return false;
+		}
+
+		if (response.errCode == '0') {
+			seditor_insertunit('sightml', response.result);
+		} 
+		else if (response.errCode == '-1'){
+			// 请求失败
+			showDialog('{lang qqconnect:connect_wbsign_no_account}');
+		} else {
+			// 未开通微博
+			showDialog('{lang qqconnect:connect_wbsign_no_bind}');
+		}
+	}
+	
+	function connect_get_weibosign() {
+		var sign_url = '{$_G['siteurl']}connect.php?mod=config&op=weibosign';
+		var get_weibosign_ajax = Ajax("HTML", null);
+		get_weibosign_ajax.get(sign_url, connect_handle_get_weibosign);
+	}
+	
+	if($('sightmlsml')) {
+			var a = document.createElement('a');
+			a.href = 'javascript:void(0);';
+			a.style.background = 'url(' + STATICURL + 'image/common/weibo.png) no-repeat 0 2px';
+			a.onmouseover = function () { showTip(this); };
+			a.onclick = connect_get_weibosign;
+			a.setAttribute('tip', '{lang qqconnect:connect_wbsign_tip}');
+			$('sightmlsml').parentNode.appendChild(a);
+	}
 	</script>
 <!--{/block}-->
 <!--{eval return $return;}-->
