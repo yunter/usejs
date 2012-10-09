@@ -1,0 +1,9 @@
+<?PHP exit;?>	1330076231	usejs	1	127.0.0.1	2	学习 &amp; 实践	1	忍者X2系统测试文章	DEL	
+<?PHP exit;?>	1330308826	usejs	1	127.0.0.1	2	学习 &amp; 实践	2	javascript真经	DEL	
+<?PHP exit;?>	1330308826	usejs	1	127.0.0.1	2	学习 &amp; 实践	3	javascript	DEL	
+<?PHP exit;?>	1330308826	usejs	1	127.0.0.1	2	学习 &amp; 实践	4	高效javascript单元测试	DEL	
+<?PHP exit;?>	1330308826	usejs	1	127.0.0.1	2	学习 &amp; 实践	5	javascript面向对象编程	DEL	
+<?PHP exit;?>	1330308826	usejs	1	127.0.0.1	2	学习 &amp; 实践	6	javascript问题	DEL	
+<?PHP exit;?>	1330308826	usejs	1	127.0.0.1	2	学习 &amp; 实践	7	javascript	DEL	
+<?PHP exit;?>	1330308826	usejs	1	127.0.0.1	2	学习 &amp; 实践	8	javascript	DEL	
+<?PHP exit;?>	1330308826	usejs	1	127.0.0.1	2	学习 &amp; 实践	9	javascript	DEL	
