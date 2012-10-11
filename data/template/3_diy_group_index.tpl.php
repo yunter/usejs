@@ -1,25 +1,29 @@
 <?php if(!defined('IN_DISCUZ')) exit('Access Denied'); hookscriptoutput('index');
 0
-|| checktplrefresh('data/diy/group/index.htm', './template/default/common/header.htm', 1330076355, 'diy', './data/template/3_diy_group_index.tpl.php', 'data/diy', 'group/index')
-|| checktplrefresh('data/diy/group/index.htm', './template/default/common/footer.htm', 1330076355, 'diy', './data/template/3_diy_group_index.tpl.php', 'data/diy', 'group/index')
-|| checktplrefresh('data/diy/group/index.htm', './template/default/common/header_common.htm', 1330076355, 'diy', './data/template/3_diy_group_index.tpl.php', 'data/diy', 'group/index')
-|| checktplrefresh('data/diy/group/index.htm', './template/default/common/pubsearchform.htm', 1330076355, 'diy', './data/template/3_diy_group_index.tpl.php', 'data/diy', 'group/index')
+|| checktplrefresh('data/diy/group/index.htm', './template/default/common/header.htm', 1349945943, 'diy', './data/template/3_diy_group_index.tpl.php', 'data/diy', 'group/index')
+|| checktplrefresh('data/diy/group/index.htm', './template/default/common/footer.htm', 1349945943, 'diy', './data/template/3_diy_group_index.tpl.php', 'data/diy', 'group/index')
+|| checktplrefresh('data/diy/group/index.htm', './template/default/common/header_common.htm', 1349945943, 'diy', './data/template/3_diy_group_index.tpl.php', 'data/diy', 'group/index')
+|| checktplrefresh('data/diy/group/index.htm', './template/default/common/pubsearchform.htm', 1349945943, 'diy', './data/template/3_diy_group_index.tpl.php', 'data/diy', 'group/index')
 ;
 block_get('1,2');?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=<?php echo CHARSET;?>" />
-<title><?php if(!empty($navtitle)) { ?><?php echo $navtitle;?> <?php } if(empty($nobbname)) { ?> <?php echo $_G['setting']['bbname'];?> <?php } ?></title>
+<?php if($_G['config']['output']['iecompatible']) { ?><meta http-equiv="X-UA-Compatible" content="IE=EmulateIE<?php echo $_G['config']['output']['iecompatible'];?>" /><?php } ?>
+<title><?php if(!empty($navtitle)) { ?><?php echo $navtitle;?> - <?php } if(empty($nobbname)) { ?> <?php echo $_G['setting']['bbname'];?> - <?php } ?> Powered by Discuz!</title>
 <?php echo $_G['setting']['seohead'];?>
 
 <meta name="keywords" content="<?php if(!empty($metakeywords)) { echo htmlspecialchars($metakeywords); } ?>" />
 <meta name="description" content="<?php if(!empty($metadescription)) { echo htmlspecialchars($metadescription); ?> <?php } if(empty($nobbname)) { ?>,<?php echo $_G['setting']['bbname'];?><?php } ?>" />
+<meta name="generator" content="Discuz! <?php echo $_G['setting']['version'];?>" />
+<meta name="author" content="Discuz! Team and Comsenz UI Team" />
+<meta name="copyright" content="2001-2011 Comsenz Inc." />
 <meta name="MSSmartTagsPreventParsing" content="True" />
 <meta http-equiv="MSThemeCompatible" content="Yes" />
-<?php if($_G['config']['output']['iecompatible']) { ?><meta http-equiv="X-UA-Compatible" content="IE=EmulateIE<?php echo $_G['config']['output']['iecompatible'];?>" /><?php } ?>
 <base href="<?php echo $_G['siteurl'];?>" /><link rel="stylesheet" type="text/css" href="data/cache/style_<?php echo STYLEID;?>_common.css?<?php echo VERHASH;?>" /><link rel="stylesheet" type="text/css" href="data/cache/style_<?php echo STYLEID;?>_group_index.css?<?php echo VERHASH;?>" /><?php if($_G['uid'] && isset($_G['cookie']['extstyle']) && strpos($_G['cookie']['extstyle'], TPLDIR) !== false) { ?><link rel="stylesheet" id="css_extstyle" type="text/css" href="<?php echo $_G['cookie']['extstyle'];?>/style.css" /><?php } elseif($_G['style']['defaultextstyle']) { ?><link rel="stylesheet" id="css_extstyle" type="text/css" href="<?php echo $_G['style']['defaultextstyle'];?>/style.css" /><?php } ?><script type="text/javascript">var STYLEID = '<?php echo STYLEID;?>', STATICURL = '<?php echo STATICURL;?>', IMGDIR = '<?php echo IMGDIR;?>', VERHASH = '<?php echo VERHASH;?>', charset = '<?php echo CHARSET;?>', discuz_uid = '<?php echo $_G['uid'];?>', cookiepre = '<?php echo $_G['config']['cookie']['cookiepre'];?>', cookiedomain = '<?php echo $_G['config']['cookie']['cookiedomain'];?>', cookiepath = '<?php echo $_G['config']['cookie']['cookiepath'];?>', showusercard = '<?php echo $_G['setting']['showusercard'];?>', attackevasive = '<?php echo $_G['config']['security']['attackevasive'];?>', disallowfloat = '<?php echo $_G['setting']['disallowfloat'];?>', creditnotice = '<?php if($_G['setting']['creditnotice']) { ?><?php echo $_G['setting']['creditnames'];?><?php } ?>', defaultstyle = '<?php echo $_G['style']['defaultextstyle'];?>', REPORTURL = '<?php echo $_G['currenturl_encode'];?>', SITEURL = '<?php echo $_G['siteurl'];?>', JSPATH = '<?php echo $_G['setting']['jspath'];?>';</script>
-<script src="<?php echo $_G['setting']['jspath'];?>common.js?<?php echo VERHASH;?>" type="text/javascript"></script><meta name="application-name" content="<?php echo $_G['setting']['bbname'];?>" />
+<script src="<?php echo $_G['setting']['jspath'];?>common.js?<?php echo VERHASH;?>" type="text/javascript"></script>
+<meta name="application-name" content="<?php echo $_G['setting']['bbname'];?>" />
 <meta name="msapplication-tooltip" content="<?php echo $_G['setting']['bbname'];?>" />
 <?php if($_G['setting']['portalstatus']) { ?><meta name="msapplication-task" content="name=<?php echo $_G['setting']['navs']['1']['navname'];?>;action-uri=<?php echo !empty($_G['setting']['domain']['app']['portal']) ? 'http://'.$_G['setting']['domain']['app']['portal'] : $_G['siteurl'].'portal.php'; ?>;icon-uri=<?php echo $_G['siteurl'];?><?php echo IMGDIR;?>/portal.ico" /><?php } ?>
 <meta name="msapplication-task" content="name=<?php echo $_G['setting']['navs']['2']['navname'];?>;action-uri=<?php echo !empty($_G['setting']['domain']['app']['forum']) ? 'http://'.$_G['setting']['domain']['app']['forum'] : $_G['siteurl'].'forum.php'; ?>;icon-uri=<?php echo $_G['siteurl'];?><?php echo IMGDIR;?>/bbs.ico" />
@@ -229,7 +233,7 @@ EOF;
 <input type="hidden" name="srchtype" value="title" />
 <input type="hidden" name="srhfid" value="<?php echo $_G['fid'];?>" id="dzsearchforumid" />
 <input type="hidden" name="srhlocality" value="<?php echo $_G['basescript'];?>::<?php echo CURMODULE;?>" />
-<?php if(!empty($searchparams['1'])) { if(is_array($searchparams['1'])) foreach($searchparams['1'] as $key => $value) { ?><?php $srchotquery .= '&' . $key . '=' . $value;?><input type="hidden" name="<?php echo $key;?>" value="<?php echo $value;?>" />
+<?php if(!empty($searchparams['1'])) { if(is_array($searchparams['1'])) foreach($searchparams['1'] as $key => $value) { ?><?php $srchotquery .= '&' . $key . '=' . rawurlencode($value);?><input type="hidden" name="<?php echo $key;?>" value="<?php echo $value;?>" />
 <?php } ?>
 <input type="hidden" name="source" value="discuz" />
 <input type="hidden" name="fId" value=""  id="cloudsearchforumId" />
@@ -431,8 +435,8 @@ GMT<?php echo $_G['timenow']['offset'];?>, <?php echo $_G['timenow']['time'];?>
 </p>
 </div>
 <div id="frt">
-<p><img src="<?php echo STATICURL;?>image/common/fooer_logo.png" /></p>
-            <p>Powered by <strong>Discuz!</strong> <?php if(!empty($_G['setting']['boardlicensed'])) { ?> <a href="http://license.comsenz.com/?pid=1&amp;host=<?php echo $_SERVER['HTTP_HOST'];?>" target="_blank">Licensed</a><?php } ?></p>
+<p>Powered by <strong><a href="http://www.discuz.net" target="_blank">Discuz!</a></strong> <em><?php echo $_G['setting']['version'];?></em><?php if(!empty($_G['setting']['boardlicensed'])) { ?> <a href="http://license.comsenz.com/?pid=1&amp;host=<?php echo $_SERVER['HTTP_HOST'];?>" target="_blank">Licensed</a><?php } ?></p>
+<p class="xs0">&copy; 2001-2011 <a href="http://www.comsenz.com" target="_blank">Comsenz Inc.</a></p>
 </div><?php updatesession();?><?php if($_G['uid'] && $_G['group']['allowinvisible']) { ?>
 <script type="text/javascript">
 var invisiblestatus = '<?php if($_G['session']['invisible']) { ?>隐身<?php } else { ?>在线<?php } ?>';
