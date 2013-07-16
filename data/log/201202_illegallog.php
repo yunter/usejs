@@ -1,9 +1,0 @@
-<?PHP exit;?>	1329445778	usejs	use***js	Ques #0	127.0.0.1
-<?PHP exit;?>	1330308213	usejs	use***js	Ques #0	127.0.0.1
-<?PHP exit;?>	1330308249	usejs	use***js	Ques #0	127.0.0.1
-<?PHP exit;?>	1330308265	usejs	use***js	Ques #0	127.0.0.1
-<?PHP exit;?>	1330308477	jsuse	10***0	Ques #0	127.0.0.1
-<?PHP exit;?>	1330308482	jsuse	10***0	Ques #0	127.0.0.1
-<?PHP exit;?>	1330308563	jsuse	10***0	Ques #0	127.0.0.1
-<?PHP exit;?>	1330308585	jsuse	10***0	Ques #0	127.0.0.1
-<?PHP exit;?>	1330497137	usejs	use***js	Ques #0	127.0.0.1
